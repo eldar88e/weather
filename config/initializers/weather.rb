@@ -1,0 +1,1 @@
+WEATHER_API_KEY = Rails.application.credentials.weather_api_key

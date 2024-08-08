@@ -11,8 +11,8 @@ services:
 
   web:
     image: web-weather-test
-    tty: true
-    stdin_open: true
+    #tty: true
+    #stdin_open: true
     build: .
     container_name: web-weather-test
     entrypoint: [ "sh", "-c", "bundle exec rails db:prepare && bundle exec rspec --format documentation" ]

@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe WeatherService, type: :service do
   describe '#connect_to' do
     let(:weather_service) { WeatherService.new }
-    let(:url) { "https://dataservice.accuweather.com/currentconditions/v1/#{WeatherService::LOCATION_KEY}/historical/24?apikey=#{WeatherService::API_KEY}" }
+    let(:api_key) { WEATHER_API_KEY }
+    let(:url) { "https://dataservice.accuweather.com/currentconditions/v1/294021/historical/24?apikey=#{api_key}" }
 
     before do
       stub_request(:get, url)
