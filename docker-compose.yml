@@ -1,0 +1,60 @@
+services:
+  pg:
+    image: postgres:16.1
+    container_name: pg-weather
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      TZ: Europe/Moscow
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - weather-net
+
+  web:
+    image: web
+    build: .
+    container_name: web-weather
+    environment:
+      DB_HOST: pg
+      DB_USERNAME: admin
+      DB_PASSWORD: admin
+      RAILS_ENV: production
+    depends_on:
+      - pg
+    volumes:
+      - gems:/usr/local/bundle
+      - .:/app
+    ports:
+      - 3001:3000
+    networks:
+      - weather-net
+    restart: "unless-stopped"
+
+  good_job:
+    image: good_job
+    build: .
+    container_name: good_job-weather
+    entrypoint: []
+    environment:
+      DB_HOST: pg
+      DB_USERNAME: admin
+      DB_PASSWORD: admin
+      RAILS_ENV: production
+    command: bundle exec good_job start
+    volumes:
+      - gems:/usr/local/bundle
+      - .:/app
+    depends_on:
+      - pg
+    networks:
+      - weather-net
+    restart: "unless-stopped"
+
+volumes:
+  gems:
+  db_data:
+
+networks:
+  weather-net:

@@ -1,0 +1,34 @@
+services:
+  pg:
+    image: postgres:16.1
+    container_name: pg-weather-test
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      TZ: Europe/Moscow
+    networks:
+      - weather-test-net
+
+  web:
+    image: web-weather-test
+    tty: true
+    stdin_open: true
+    build: .
+    container_name: web-weather-test
+    entrypoint: [ "sh", "-c", "bundle exec rails db:prepare && bundle exec rspec --format documentation" ]
+    environment:
+      DB_HOST: pg
+      RAILS_ENV: test
+    depends_on:
+      - pg
+    volumes:
+      - gems:/usr/local/bundle
+      - .:/app
+    networks:
+      - weather-test-net
+
+volumes:
+  gems:
+
+networks:
+  weather-test-net:
