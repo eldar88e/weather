@@ -7,7 +7,6 @@ RSpec.describe WeatherController, type: :controller do
     it 'returns the data of the most recent weather record' do
       get :current
       expect(response).to have_http_status(:success)
-      binding.pry
       expect(response.body).to eq(weather_records.sort { |i| i.datetime }.reverse.first.data.to_json)
     end
   end
