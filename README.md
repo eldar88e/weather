@@ -24,6 +24,7 @@
    ```bash
    docker-compose up --build
    ```
+   Ваше приложение будет доступно по адресу http://localhost:3001.
    
    Или без Docker:
     ```bash
@@ -33,6 +34,7 @@
     
     rails s
    ```
+   Ваше приложение будет доступно по адресу http://localhost:3000.
 
 ## Тестирование
 
@@ -45,3 +47,15 @@ docker-compose -f docker-compose-test.yml up --build --abort-on-container-exit
 ```bash
 bundle exec rspec
 ```
+
+## Разработка
+* Debug и Pry для отладки
+* RSpec для написания тестов
+* FactoryBot и Faker для создания тестовых данных
+* WebMock и VCR для имитации HTTP-запросов
+
+## Лицензия
+Этот проект лицензирован под MIT License.
+
+## Контакты
+Если у вас есть вопросы, пожалуйста, свяжитесь с нами по адресу: eminov-mus@ya.ru

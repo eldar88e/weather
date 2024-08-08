@@ -21,6 +21,7 @@ services:
       DB_USERNAME: admin
       DB_PASSWORD: admin
       RAILS_ENV: production
+      RAILS_MASTER_KEY: 6b28f61e189a2bcd3154c7e28f392243
     depends_on:
       - pg
     volumes:
@@ -42,6 +43,7 @@ services:
       DB_USERNAME: admin
       DB_PASSWORD: admin
       RAILS_ENV: production
+      RAILS_MASTER_KEY: 6b28f61e189a2bcd3154c7e28f392243
     command: bundle exec good_job start
     volumes:
       - gems:/usr/local/bundle
