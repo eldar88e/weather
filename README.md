@@ -14,37 +14,25 @@
 
 1. **Клонируйте репозиторий:**
 
-```bash
-git clone git@github.com:eldar88e/weather.git
-cd weather
- ```
+   ```bash
+   git clone git@github.com:eldar88e/weather.git
+   cd weather
+    ```
 2. **Установите зависимости:**
 
-Если вы используете Docker, установите зависимости с помощью Docker:
-```bash
-docker-compose up --build
-```
+   Если вы используете Docker, установка зависимостей и запуск осуществляется с помощью одной команды:
+   ```bash
+   docker-compose up --build
+   ```
    
-Или без Docker:
- ```bash
- bundle install
-```
-   
-3. **Настройте базу данных:**
- ```bash
- rails db:prepare
- ```
-
-4. **Запустите сервер:**
-
-Если вы используете Docker:
-```bash
-docker-compose up
-```
-Или без Docker:
-```bash
-rails s
-```
+   Или без Docker:
+    ```bash
+    bundle
+    
+    rails db:prepare
+    
+    rails s
+   ```
 
 ## Тестирование
 
