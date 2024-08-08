@@ -17,11 +17,9 @@
 ```bash
 git clone git@github.com:eldar88e/weather.git
 cd weather
-Установите зависимости:
  ```
+2. **Установите зависимости:**
 
-2. **Если вы используете Docker, установите зависимости с помощью Docker:**
-   
 Если вы используете Docker, установите зависимости с помощью Docker:
 ```bash
 docker-compose up --build
